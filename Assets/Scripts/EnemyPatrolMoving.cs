@@ -23,9 +23,10 @@ public class EnemyPatrolMoving : MonoBehaviour
         transform.Translate(Vector2.left * _speed * Time.deltaTime);
         _animator.SetFloat("Speed", 1);
 
-        RaycastHit2D groundInfo = Physics2D.Raycast(_groundCheck.position, Vector2.down, _groundDistanceCheck);
+        RaycastHit2D groundCastDownInfo = Physics2D.Raycast(_groundCheck.position, Vector2.down, _groundDistanceCheck);
+        RaycastHit2D groundCastForwardInfo = Physics2D.Raycast(_groundCheck.position, Vector2.left, _groundDistanceCheck);
 
-        if (!groundInfo.collider)
+        if (!groundCastDownInfo.collider)
         {
             if (_movingRight)
             {

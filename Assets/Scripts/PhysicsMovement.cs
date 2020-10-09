@@ -8,7 +8,8 @@ public class PhysicsMovement : MonoBehaviour
     [SerializeField] private float GravityModifier = 1f;
     [SerializeField] private Vector2 Velocity;
     [SerializeField] private LayerMask LayerMask;
-    [SerializeField] private float _playerSpeed;
+    [SerializeField] private float _playerSpeed = 3f;
+    [SerializeField] private float _playerJumpPower = 8f;
 
     private float MinGroundNormalY = .65f;
 
@@ -33,8 +34,7 @@ public class PhysicsMovement : MonoBehaviour
     {
         contactFilter.useTriggers = false;
         contactFilter.SetLayerMask(LayerMask);
-        contactFilter.useLayerMask = true;
-        _playerSpeed = 3f;
+        contactFilter.useLayerMask = true;        
     }
 
     void Update()
@@ -42,7 +42,7 @@ public class PhysicsMovement : MonoBehaviour
         targetVelocity = new Vector2(Input.GetAxis("Horizontal")* _playerSpeed, 0);
 
         if (Input.GetKey(KeyCode.Space) && grounded)
-            Velocity.y = 5;
+            Velocity.y = _playerJumpPower;
     }
 
     void FixedUpdate()
