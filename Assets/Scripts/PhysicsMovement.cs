@@ -25,6 +25,7 @@ public class PhysicsMovement : MonoBehaviour
 
     public Vector2 targetVelocity { get; private set; }
     public bool grounded { get; private set; }
+    public bool onLadder { get; private set; }
 
     private void OnEnable()
     {
@@ -35,7 +36,8 @@ public class PhysicsMovement : MonoBehaviour
     {
         contactFilter.useTriggers = false;
         contactFilter.SetLayerMask(_layerMask);
-        contactFilter.useLayerMask = true;        
+        contactFilter.useLayerMask = true;
+        onLadder = false;
     }
 
     private void Update()
@@ -112,9 +114,11 @@ public class PhysicsMovement : MonoBehaviour
 
         if (collision.gameObject.GetComponent<Ladder>())
         {
-            if(rb2d.velocity.y > 0.1)
+                onLadder = true;
+            if (Math.Abs(rb2d.velocity.y) > 0.1)
+            {
                 _gravityModifier = 0f;
-
+            }
             _velocity = new Vector2(0, 0);
             if (Mathf.Abs(targetVelocity.y) > 0)
             {
@@ -127,8 +131,10 @@ public class PhysicsMovement : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<Ladder>())
         {
+            grounded = true;
             _gravityModifier = 1f;
-            _velocity = new Vector2(0, 0);
+            onLadder = false;
+            rb2d.velocity = new Vector2(0, 0);
         }
     }
 }
