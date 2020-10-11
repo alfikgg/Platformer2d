@@ -13,7 +13,6 @@ public class GemSpawn : MonoBehaviour
         for (int i = 0; i < _spawnPoint.childCount; i++)
         {
             _spawnPoints.Add(_spawnPoint.GetChild(i));
-            Debug.Log(_spawnPoints[i].transform.name);
         }
 
         for (int i = 0; i < _spawnPoints.Count; i++)

@@ -14,8 +14,9 @@ GameObject:
   - component: {fileID: 5452253356249885371}
   - component: {fileID: 8963655280062962688}
   - component: {fileID: 3374447518152278333}
+  - component: {fileID: -6745704567431735995}
   m_Layer: 0
-  m_Name: EnemyFog
+  m_Name: EnemyFrog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -145,7 +146,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _groundCheck: {fileID: 5452253355141073792}
   _speed: 2
-  _groundDistanceCheck: 0.5
+  _groundBottomDistanceCheck: 0.5
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!50 &3374447518152278333
 Rigidbody2D:
   serializedVersion: 4
@@ -167,6 +171,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &-6745704567431735995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278045894809852717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c2e16a62abd57848bfc25cd835ada5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HitEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5452253355141073793
 GameObject:
   m_ObjectHideFlags: 0
@@ -191,7 +210,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5452253355141073793}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.7, y: -0.25, z: 0}
+  m_LocalPosition: {x: -0.7, y: -0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2971102759786419747}

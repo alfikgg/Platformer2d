@@ -5,13 +5,14 @@ using UnityEngine;
 
 public class PhysicsMovement : MonoBehaviour
 {
-    [SerializeField] private float GravityModifier = 1f;
-    [SerializeField] private Vector2 Velocity;
-    [SerializeField] private LayerMask LayerMask;
-    [SerializeField] private float _playerSpeed = 3f;
-    [SerializeField] private float _playerJumpPower = 8f;
+    [SerializeField] private float _gravityModifier = 1f;
+    [SerializeField] private Vector2 _velocity;
+    [SerializeField] private LayerMask _layerMask;
+    [SerializeField] private float _speed = 3f;
+    [SerializeField] private float _jumpPower = 8f;
+    [SerializeField] private float _verticalSpeed = 2;
 
-    private float MinGroundNormalY = .65f;
+    private float _minGroundNormalY = .65f;
 
     protected Vector2 groundNormal;
     protected Rigidbody2D rb2d;
@@ -25,34 +26,35 @@ public class PhysicsMovement : MonoBehaviour
     public Vector2 targetVelocity { get; private set; }
     public bool grounded { get; private set; }
 
-    void OnEnable()
+    private void OnEnable()
     {
         rb2d = GetComponent<Rigidbody2D>();
     }
 
-    void Start()
+    private void Start()
     {
         contactFilter.useTriggers = false;
-        contactFilter.SetLayerMask(LayerMask);
+        contactFilter.SetLayerMask(_layerMask);
         contactFilter.useLayerMask = true;        
     }
 
-    void Update()
+    private void Update()
     {
-        targetVelocity = new Vector2(Input.GetAxis("Horizontal")* _playerSpeed, 0);
+        targetVelocity = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+
 
         if (Input.GetKey(KeyCode.Space) && grounded)
-            Velocity.y = _playerJumpPower;
+            _velocity.y = _jumpPower;
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        Velocity += GravityModifier * Physics2D.gravity * Time.deltaTime;
-        Velocity.x = targetVelocity.x;
+        _velocity += _gravityModifier * Physics2D.gravity * Time.deltaTime;
+        _velocity.x = targetVelocity.x * _speed;
 
         grounded = false;
 
-        Vector2 deltaPosition = Velocity * Time.deltaTime;
+        Vector2 deltaPosition = _velocity * Time.deltaTime;
         Vector2 moveAlongGround = new Vector2(groundNormal.y, -groundNormal.x);
         Vector2 move = moveAlongGround * deltaPosition.x;
 
@@ -63,7 +65,7 @@ public class PhysicsMovement : MonoBehaviour
         Movement(move, true);
     }
 
-    void Movement(Vector2 move, bool yMovement)
+    private void Movement(Vector2 move, bool yMovement)
     {
         float distance = move.magnitude;
 
@@ -81,7 +83,7 @@ public class PhysicsMovement : MonoBehaviour
             for (int i = 0; i < hitBufferList.Count; i++)
             {
                 Vector2 currentNormal = hitBufferList[i].normal;
-                if (currentNormal.y > MinGroundNormalY)
+                if (currentNormal.y > _minGroundNormalY)
                 {
                     grounded = true;
                     if (yMovement)
@@ -91,10 +93,10 @@ public class PhysicsMovement : MonoBehaviour
                     }
                 }
 
-                float projection = Vector2.Dot(Velocity, currentNormal);
+                float projection = Vector2.Dot(_velocity, currentNormal);
                 if (projection < 0)
                 {
-                    Velocity = Velocity - projection * currentNormal;
+                    _velocity = _velocity - projection * currentNormal;
                 }
 
                 float modifiedDistance = hitBufferList[i].distance - shellRadius;
@@ -103,5 +105,30 @@ public class PhysicsMovement : MonoBehaviour
         }
 
         rb2d.position = rb2d.position + move.normalized * distance;
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+
+        if (collision.gameObject.GetComponent<Ladder>())
+        {
+            if(rb2d.velocity.y > 0.1)
+                _gravityModifier = 0f;
+
+            _velocity = new Vector2(0, 0);
+            if (Mathf.Abs(targetVelocity.y) > 0)
+            {
+                rb2d.velocity = new Vector2(0, targetVelocity.y * _verticalSpeed);
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.GetComponent<Ladder>())
+        {
+            _gravityModifier = 1f;
+            _velocity = new Vector2(0, 0);
+        }
     }
 }

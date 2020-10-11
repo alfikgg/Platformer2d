@@ -8,8 +8,8 @@ public class EnemyPatrolMoving : MonoBehaviour
 {
     [SerializeField] private Transform _groundCheck;
     [SerializeField] private float _speed = 3f;
-    [SerializeField] private float _groundDistanceCheck = 0.5f;
-
+    [SerializeField] private float _groundBottomDistanceCheck = 0.5f;
+    [SerializeField] private LayerMask _layerMask;
 
     private bool _movingRight = false;
     private Animator _animator;
@@ -23,9 +23,8 @@ public class EnemyPatrolMoving : MonoBehaviour
         transform.Translate(Vector2.left * _speed * Time.deltaTime);
         _animator.SetFloat("Speed", 1);
 
-        RaycastHit2D groundCastDownInfo = Physics2D.Raycast(_groundCheck.position, Vector2.down, _groundDistanceCheck);
-        RaycastHit2D groundCastForwardInfo = Physics2D.Raycast(_groundCheck.position, Vector2.left, _groundDistanceCheck);
-
+        RaycastHit2D groundCastDownInfo = Physics2D.Raycast(_groundCheck.position, Vector2.down, _groundBottomDistanceCheck, _layerMask);
+        
         if (!groundCastDownInfo.collider)
         {
             if (_movingRight)
