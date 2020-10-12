@@ -5,15 +5,18 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(PhysicsMovement))]
 [RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(Player))]
 
 public class PlayerAnimations : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
     [SerializeField] private PhysicsMovement _playerMoveScript;
     [SerializeField] private SpriteRenderer _spriteRenderer;
+    [SerializeField] private Player _player;
 
     private bool _isGrounded;
     private bool _onLadder;
+    private bool _isDead;
 
     private void Start()
     {
@@ -33,6 +36,7 @@ public class PlayerAnimations : MonoBehaviour
 
         _isGrounded = _playerMoveScript.grounded;
         _onLadder = _playerMoveScript.onLadder;
+        _isDead = _player.isDead;
 
         if (!_isGrounded && !_onLadder)
             _animator.SetBool("Jump", true);
@@ -51,7 +55,8 @@ public class PlayerAnimations : MonoBehaviour
         else if (!_onLadder)
             _animator.SetBool("OnLadder", false);
 
-        
+        if (_isDead)
+            _animator.SetTrigger("IsDead");
 
     }
 }
