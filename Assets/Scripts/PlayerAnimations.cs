@@ -25,7 +25,7 @@ public class PlayerAnimations : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
-    void Update()
+    private void Update()
     {
         if (_playerMoveScript.targetVelocity.x > 0)
             _spriteRenderer.flipX = false;
@@ -56,7 +56,7 @@ public class PlayerAnimations : MonoBehaviour
             _animator.SetBool("OnLadder", false);
 
         if (_isDead)
-            _animator.SetTrigger("IsDead");
+            _animator.SetBool("IsDead", true);
 
     }
 }

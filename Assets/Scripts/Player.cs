@@ -14,8 +14,8 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        _boxCollider2D = gameObject.GetComponent<BoxCollider2D>();
-        _physicsMovement = gameObject.GetComponent<PhysicsMovement>();
+        _boxCollider2D = GetComponent<BoxCollider2D>();
+        _physicsMovement = GetComponent<PhysicsMovement>();
         isDead = false;
     }
     private void OnCollisionEnter2D(Collision2D collision2D)

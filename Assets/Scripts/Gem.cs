@@ -9,12 +9,12 @@ public class Gem : MonoBehaviour
 
     private void Start()
     {
-        _animator = gameObject.GetComponent<Animator>();
+        _animator = GetComponent<Animator>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.GetComponent<Player>())
+        if(collision.GetComponent<Player>())
         {
             StartCoroutine(PickUp());
         }
