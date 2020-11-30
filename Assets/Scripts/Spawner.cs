@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GemSpawn : MonoBehaviour
+public class Spawner : MonoBehaviour
 {
     [SerializeField] private Transform _spawnPoint;
-    [SerializeField] private GameObject _gemPrefab;
+    [SerializeField] private GameObject _spawnObjectPrefab;
 
     private List<Transform> _spawnPoints = new List<Transform>();
-    void Start()
+    private void Start()
     {
         for (int i = 0; i < _spawnPoint.childCount; i++)
         {
@@ -17,7 +17,7 @@ public class GemSpawn : MonoBehaviour
 
         for (int i = 0; i < _spawnPoints.Count; i++)
         {
-            Instantiate(_gemPrefab, _spawnPoints[i].position, Quaternion.identity);
+            Instantiate(_spawnObjectPrefab, _spawnPoints[i].position, Quaternion.identity);
         }
     }
 }

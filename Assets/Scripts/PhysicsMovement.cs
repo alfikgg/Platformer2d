@@ -44,7 +44,6 @@ public class PhysicsMovement : MonoBehaviour
     {
         targetVelocity = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
-
         if (Input.GetKey(KeyCode.Space) && grounded)
             _velocity.y = _jumpPower;
     }
@@ -112,9 +111,10 @@ public class PhysicsMovement : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
 
-        if (collision.gameObject.GetComponent<Ladder>())
+        if (collision.GetComponent<Ladder>())
         {
-                onLadder = true;
+            onLadder = true;
+            rb2d.WakeUp();
             if (Math.Abs(rb2d.velocity.y) > 0.1)
             {
                 _gravityModifier = 0f;
@@ -129,7 +129,7 @@ public class PhysicsMovement : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<Ladder>())
+        if (collision.GetComponent<Ladder>())
         {
             grounded = true;
             _gravityModifier = 1f;
