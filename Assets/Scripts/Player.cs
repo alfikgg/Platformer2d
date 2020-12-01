@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(BoxCollider2D))]
 [RequireComponent(typeof(PhysicsMovement))]
@@ -35,6 +36,7 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         Destroy(gameObject);
+        SceneManager.LoadSceneAsync(0);
     }
 
 }
