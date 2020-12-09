@@ -649,6 +649,7 @@ GameObject:
   - component: {fileID: 1070951894}
   - component: {fileID: 1070951893}
   - component: {fileID: 1070951892}
+  - component: {fileID: 1070951895}
   m_Layer: 5
   m_Name: ExitButton
   m_TagString: Untagged
@@ -767,6 +768,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1070951890}
   m_CullTransparentMesh: 0
+--- !u!114 &1070951895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1070951890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f14ed38295fc374b97b479e45f1502f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startScale: {x: 0, y: 0, z: 0}
+  _targetScale: {x: 1.1, y: 1.1, z: 1.1}
 --- !u!1 &1337721774
 GameObject:
   m_ObjectHideFlags: 0
@@ -856,6 +871,7 @@ GameObject:
   - component: {fileID: 1498867536}
   - component: {fileID: 1498867535}
   - component: {fileID: 1498867534}
+  - component: {fileID: 1498867537}
   m_Layer: 5
   m_Name: PlayButton
   m_TagString: Untagged
@@ -974,6 +990,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1498867532}
   m_CullTransparentMesh: 0
+--- !u!114 &1498867537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1498867532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f14ed38295fc374b97b479e45f1502f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startScale: {x: 0, y: 0, z: 0}
+  _targetScale: {x: 1.1, y: 1.1, z: 1.1}
 --- !u!1 &1534571289
 GameObject:
   m_ObjectHideFlags: 0
@@ -1078,7 +1108,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 64.6
+  m_fontSize: 72
   m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1211,7 +1241,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60.7
+  m_fontSize: 72
   m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1273,6 +1303,7 @@ GameObject:
   - component: {fileID: 1730533109}
   - component: {fileID: 1730533108}
   - component: {fileID: 1730533107}
+  - component: {fileID: 1730533110}
   m_Layer: 5
   m_Name: BackButton
   m_TagString: Untagged
@@ -1402,6 +1433,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1730533105}
   m_CullTransparentMesh: 0
+--- !u!114 &1730533110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1730533105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f14ed38295fc374b97b479e45f1502f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startScale: {x: 0, y: 0, z: 0}
+  _targetScale: {x: 1.1, y: 1.1, z: 1.1}
 --- !u!1 &1772860180
 GameObject:
   m_ObjectHideFlags: 0
@@ -1414,6 +1459,7 @@ GameObject:
   - component: {fileID: 1772860184}
   - component: {fileID: 1772860183}
   - component: {fileID: 1772860182}
+  - component: {fileID: 1772860185}
   m_Layer: 5
   m_Name: AutorButton
   m_TagString: Untagged
@@ -1543,6 +1589,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1772860180}
   m_CullTransparentMesh: 0
+--- !u!114 &1772860185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1772860180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f14ed38295fc374b97b479e45f1502f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startScale: {x: 0, y: 0, z: 0}
+  _targetScale: {x: 1.1, y: 1.1, z: 1.1}
 --- !u!1 &1800053715
 GameObject:
   m_ObjectHideFlags: 0
@@ -1555,6 +1615,7 @@ GameObject:
   - component: {fileID: 1800053718}
   - component: {fileID: 1800053717}
   - component: {fileID: 1800053719}
+  - component: {fileID: 1800053720}
   m_Layer: 5
   m_Name: mainMenuPanel
   m_TagString: Untagged
@@ -1634,6 +1695,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a831c85fdf197484bb735b4fd64a0e23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &1800053720
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1800053715}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fabf425a3ea06a040b29cc66052c3155, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1819286158
 GameObject:
   m_ObjectHideFlags: 0
@@ -2090,7 +2170,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 55.45
+  m_fontSize: 72
   m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 1
